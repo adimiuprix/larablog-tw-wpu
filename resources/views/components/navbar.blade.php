@@ -7,6 +7,8 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
+                        {{-- :active adalah sebuah directive yang ada di blade template angine,
+                            lihat->navlink ada variable $active itu di tampilkan disini. --}}
                         <x-navlink href="/" :active="request()->is('/')">Home</x-navlink>
                         <x-navlink href="/about" :active="request()->is('about')">About</x-navlink>
                         <x-navlink href="/blog" :active="request()->is('blog')">Blog</x-navlink>

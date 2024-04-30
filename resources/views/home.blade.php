@@ -1,7 +1,7 @@
 <x-layout>
 
     {{-- <x-slot:title> digunakan untuk mengirim variable ke sebuah component Header,
-    karena nilai variable $titile tidak bisa langsung di tampilkan.
+    karena nilai variable $title tidak bisa langsung di tampilkan.
     <x-slot:namaVariable> namaVariable adalah variable di component penerima. --}}
     <x-slot:title>{{ $title }}</x-slot:title>
 
