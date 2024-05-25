@@ -28,6 +28,9 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            // ternary operator $a = $a ? $a : $b
+            // elvish operator $a = $a ?: $b
+            // null coalescing operator $a ??= $b
             'remember_token' => Str::random(10),
         ];
     }
@@ -42,3 +45,11 @@ class UserFactory extends Factory
         ]);
     }
 }
+
+/** Penggunaan faker
+ * Saat hendak generate data menggunakan faker, kita menggunakan php artisan tinker
+ * Masuk ke tinker dengan terminal cli, lalu ketik "App\Models\User::factory()->create();".
+ * Pastikan pada model User sudah menggunakan class "factory"
+ * Jika mau generate banyak sekaligus "App\Models\User::factory(5)->create();".
+ * Jika mau menjalanakan dengan method "unverified()", ketik: "App\Models\User::factory(3)->unverified()->create();"
+ */

@@ -5,7 +5,6 @@
     <x-slot:namaVariable> namaVariable adalah variable di component penerima. --}}
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <p>Welcome to my homepage</p>
-    </div>
+    <h3 class="text-xl-3">Ini adalah Homepage</h3>
+    <p>Welcome to my homepage</p>
 </x-layout>
