@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Http\Controllers\PostController;
+use App\Models\User;
 
 Route::get('/', function () {
     # Mengirim data 'title' ke home untuk di tampilkan
@@ -15,6 +16,10 @@ Route::get('/blog/{post:slug}', function(Post $post){
     // $post = Post::find($id);
 
     return view('blog_detail', ['title' => 'Blog detail', 'post' => $post]);
+});
+
+Route::get('/authors/{user}', function(User $user){
+    return view('blogs', ['title' => 'Articles by ' . $user->name, 'posts' => $user->posts]);
 });
 
 Route::get('/about', function () {

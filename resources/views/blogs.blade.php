@@ -8,10 +8,9 @@
         </a>
 
         <div class="text-base text-gray-500">
-            <a href="authors/{{ $post->author->id }}" class="hover:underline">{{ $post->author->name }}</a>  | {{ $post->created_at->diffForHumans() }}
+            <a href="#">{{ $post->author->name }}</a>  | {{ $post->created_at->diffForHumans() }}
         </div>
         <p class="my-4 font-light">{{ $post->body }}</p>
-        <a href="/blog/{{ $post->slug }}" class="font-medium text-blue-400 hover:underline">Read more &raquo;</a>
     </article>
     @endforeach
 
