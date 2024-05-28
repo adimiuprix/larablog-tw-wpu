@@ -11,6 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Schema table categories
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->timestamps();
+        });
+
+        // Schema table posts
         Schema::create('posts', function (Blueprint $table){
             $table->id();
             $table->string('title');
@@ -18,6 +27,11 @@ return new class extends Migration
             // Melakukan relasi pada kolom "author_id" dimana id nya sesuai "id" di table users
             $table->foreignId('author_id')->constrained(
                 table: 'users', indexName: 'posts_author_id' // 'posts_author_id' nama nya bebas saja tapi buat masuk akal
+            );
+
+            $table->foreignId('category_id')->constrained(
+                table: 'categories',
+                indexName: 'posts_category_id'
             );
 
             $table->string('slug')->unique();
@@ -31,6 +45,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('posts');
     }
 };

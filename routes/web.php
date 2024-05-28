@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Http\Controllers\PostController;
 use App\Models\User;
+use App\Models\Category;
 
 Route::get('/', function () {
     # Mengirim data 'title' ke home untuk di tampilkan
@@ -18,8 +19,12 @@ Route::get('/blog/{post:slug}', function(Post $post){
     return view('blog_detail', ['title' => 'Blog detail', 'post' => $post]);
 });
 
-Route::get('/authors/{user}', function(User $user){
+Route::get('/authors/{user:username}', function(User $user){
     return view('blogs', ['title' => 'Articles by ' . $user->name, 'posts' => $user->posts]);
+});
+
+Route::get('/categories/{category:slug}', function(Category $category){
+    return view('blogs', ['title' => 'Articles in: ' . $category->name, 'posts' => $category->posts]);
 });
 
 Route::get('/about', function () {
