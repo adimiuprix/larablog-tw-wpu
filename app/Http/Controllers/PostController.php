@@ -8,7 +8,8 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::all();
+        // Lazy loading Cara 1
+        $posts = Post::with(['author', 'category'])->latest()->get();
 
         return view('blog', ['title' => 'Blog page', 'posts' => $posts]);
     }

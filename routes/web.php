@@ -20,10 +20,13 @@ Route::get('/blog/{post:slug}', function(Post $post){
 });
 
 Route::get('/authors/{user:username}', function(User $user){
+    // Ini Lazy eager Loading cara 1
+    // $posts = $user->posts->load('category', 'author');
     return view('blogs', ['title' => 'Articles by ' . $user->name, 'posts' => $user->posts]);
 });
 
 Route::get('/categories/{category:slug}', function(Category $category){
+    // $posts = $category->posts->load('category', 'author');
     return view('blogs', ['title' => 'Articles in: ' . $category->name, 'posts' => $category->posts]);
 });
 

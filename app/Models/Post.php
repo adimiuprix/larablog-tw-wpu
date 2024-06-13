@@ -12,6 +12,9 @@ class Post extends Model
 
     protected $fillable = ['title', 'author_id', 'slug', 'body'];
 
+    // Lazy loading secara default, lakukan langsung di model nya. Pilih kolom mana yang mau di biki lazy loading.
+    protected $with = ['author', 'category'];
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class); // BelongsTo ke class User
