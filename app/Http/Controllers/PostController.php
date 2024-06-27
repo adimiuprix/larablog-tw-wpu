@@ -7,13 +7,21 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index(){
-        // Lazy loading Cara 1
-        $posts = Post::with(['author', 'category'])->latest()->get();
-
-        return view('blog', ['title' => 'Blog page', 'posts' => $posts]);
+    public function index(Request $request)
+    {
+        // Mengambil postingan terbaru
+        $postsQuery = Post::latest();
+        
+        // Menggunakan lazy loading untuk menghindari N+1 problem
+        $posts = $postsQuery->with(['author', 'category'])->get();
+    
+        // Mengembalikan view dengan data yang diperlukan
+        return view('blog', [
+            'title' => 'Blog Page',
+            'posts' => Post::filter()->latest()->get()
+        ]);
     }
-
+    
     public function post(){
         return view('post', ['title' => 'Isi Post']);
     }
